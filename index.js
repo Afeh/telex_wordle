@@ -42,6 +42,18 @@ const integrationSpec = {
 		}
 	  ],
 	  "target_url": "https://telex-wordle.vercel.app/webhook",
+	  "endpoints": [
+		{
+			"path": "/webhook",
+			"method": "POST",
+			"description": "Default endpoint"
+		},
+		{
+			"path": "/test",
+			"method": "POST",
+			"description": "test endpoint"
+		}
+	  ]
 	}
   }
 
@@ -95,6 +107,10 @@ app.post('/webhook', async (req, res) => {
 		console.error("Error fetching answer:", err.message);
 		res.status(500).json({ error: "Failed to fetch Wordle answer" });
 	}
+});
+
+app.post("/test", async (req, res) => {
+	res.json ({ status:"success", message:`${req.body}`});
 });
 
 app.get("/integration", async (req, res) => {
