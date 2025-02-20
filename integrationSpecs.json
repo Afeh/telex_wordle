@@ -1,69 +1,32 @@
 {
 	"data": {
-		"date": {
-			"created_at": "2025-02-19",
-			"updated_at": "2025-02-19"
-		},
-		"descriptions": {
-			"app_description": "An integration that supplies the channel with the Wordle of the day and gives them responses if they guessed the right word or not, the positions of the letters that are correct, along with their number of tries left.",
-			"app_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRVxPRCAc6HBRl_tR-aMkrCUHZq45ChY_RiwkzwqdF0T8IO52m3Yb9yvp1jjlpyyzVS0&usqp=CAU",
-			"app_name": "Telex Wordle",
-			"app_url": "URL to the application or service.",
-			"background_color": "#000000"
-		},
-		"integration_category": "Communication & Collaboration",
-		"integration_type": "modifier",
-		"is_active": true,
-		"output": [
-			{
-				"label": "output_channel_1",
-				"value": true
-			},
-			{
-				"label": "output_channel_2",
-				"value": false
-			}
-		],
-		"key_features": [
-			"Feature description 1.",
-			"Feature description 2.",
-			"Feature description 3.",
-			"Feature description 4."
-		],
-		"permissions": {
-			"monitoring_user": {
-				"always_online": true,
-				"display_name": "Performance Monitor"
-			}
-		},
-		"settings": [
-			{
-				"label": "Do you want to continue",
-				"type": "checkbox",
-				"required": true,
-				"default": "Yes"
-			},
-			{
-				"label": "Provide Speed",
-				"type": "number",
-				"required": true,
-				"default": "1000"
-			},
-			{
-				"label": "Sensitivity Level",
-				"type": "dropdown",
-				"required": true,
-				"default": "Low",
-				"options": ["High", "Low"]
-			},
-			{
-				"label": "Alert Admin",
-				"type": "multi-checkbox",
-				"required": true,
-				"default": "Super-Admin",
-				"options": ["Super-Admin", "Admin", "Manager", "Developer"]
-			}
-		],
-		"target_url": ""
+	  "date": {
+		"created_at": "2025-02-20",
+		"updated_at": "2025-02-20"
+	  },
+	  "descriptions": {
+		"app_name": "Telex Wordle",
+		"app_description": "A wordle integration for Telex",
+		"app_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRVxPRCAc6HBRl_tR-aMkrCUHZq45ChY_RiwkzwqdF0T8IO52m3Yb9yvp1jjlpyyzVS0&usqp=CAU",
+		"app_url": "https://telex-wordle.vercel.app/",
+		"background_color": "#fff"
+	  },
+	  "is_active": true,
+	  "integration_type": "modifier",
+	  "integration_category": "Communication & Collaboration",
+	  "key_features": [
+		"Retrieves Today's Wordle"
+	  ],
+	  "author": "Afebu Balogun",
+	  "settings": [
+		{
+		  "label": "Provide Answer",
+		  "type": "text",
+		  "required": true,
+		  "default": "No"
+		}
+	  ],
+	  "target_url": "https://telex-wordle.vercel.app/word/answer",
+	  "tick_url": "nil"
 	}
-}
+  }
