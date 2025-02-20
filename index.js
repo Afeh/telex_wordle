@@ -1,8 +1,11 @@
 import express from "express";
 import axios from "axios";
+import cors from "cors";
 
 const app = express();
 const port = 4000;
+
+app.use(cors());
 
 const API_URL = "https://wordle-api-kappa.vercel.app";
 
