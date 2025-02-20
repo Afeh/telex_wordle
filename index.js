@@ -8,6 +8,8 @@ const API_URL = "https://wordle-api-kappa.vercel.app";
 
 app.use(express.json()); // Ensures JSON parsing for incoming requests
 
+let word = "";
+
 const integrationSpec = {
 	"data": {
 	  "date": {
@@ -36,8 +38,7 @@ const integrationSpec = {
 		  "default": "No"
 		}
 	  ],
-	  "target_url": "https://telex-wordle.vercel.app/word/answer",
-	  "tick_url": "nil"
+	  "target_url": "https://telex-wordle.vercel.app/webhook",
 	}
   }
 
@@ -74,7 +75,19 @@ app.post("/wordle", async (req, res) => {
 app.get("/wordle/answer", async (req, res) => {
 	try {
 		const response = await axios.get(`${API_URL}/answer`);
-		res.json({status: "success", message: response.data.word});
+		word = response.data.word;
+		res.json(response.data);
+	} catch (err) {
+		console.error("Error fetching answer:", err.message);
+		res.status(500).json({ error: "Failed to fetch Wordle answer" });
+	}
+});
+
+app.post('/webhook', async (req, res) => {
+	try {
+		const response = await axios.get(`${API_URL}/answer`);
+		word = response.data.word;
+		res.json({ status:"success", message:word });
 	} catch (err) {
 		console.error("Error fetching answer:", err.message);
 		res.status(500).json({ error: "Failed to fetch Wordle answer" });
