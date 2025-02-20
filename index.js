@@ -87,7 +87,7 @@ app.post('/webhook', async (req, res) => {
 	try {
 		const response = await axios.get(`${API_URL}/answer`);
 		word = response.data.word;
-		res.json({ status:"success", message:word });
+		res.json({ status:"success", message:`The wordle of the day is: ${word}` });
 	} catch (err) {
 		console.error("Error fetching answer:", err.message);
 		res.status(500).json({ error: "Failed to fetch Wordle answer" });
