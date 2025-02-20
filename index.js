@@ -74,7 +74,7 @@ app.post("/wordle", async (req, res) => {
 app.get("/wordle/answer", async (req, res) => {
 	try {
 		const response = await axios.get(`${API_URL}/answer`);
-		res.json(response.data);
+		res.json({status: "success", message: response.data.word});
 	} catch (err) {
 		console.error("Error fetching answer:", err.message);
 		res.status(500).json({ error: "Failed to fetch Wordle answer" });
