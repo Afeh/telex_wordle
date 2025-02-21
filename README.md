@@ -41,13 +41,12 @@ Receives messages from Telex channels. The endpoint expects a JSON payload with 
 {
   "channel_id": "string",
   "settings": [
-    {
-      "label": "string",
-      "type": "string",
-      "description": "string",
-      "default": "any",
-      "required": "boolean"
-    }
+   {
+        "label": "Provide Answer",
+        "type": "text",
+        "required": true,
+        "default": "No"
+  }
   ],
   "message": "string"
 }
