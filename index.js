@@ -100,6 +100,8 @@ app.get("/wordle/answer", async (req, res) => {
 
 app.post('/webhook', async (req, res) => {
 	try {
+		const prompt = req.body.message;
+		console.log(prompt);
 		const response = await axios.get(`${API_URL}/answer`);
 		word = response.data.word;
 		res.json({ status:"success", message:`The wordle of the day is: ${word}` });
