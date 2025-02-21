@@ -1,7 +1,7 @@
-import express from "express";
-import axios from "axios";
-import cors from "cors";
-import { JSDOM } from "jsdom"
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
+const webhookRoute = require("./routes/webhook");
 
 const app = express();
 const port = 4000;
@@ -57,6 +57,9 @@ const integrationSpec = {
 	},
 };
 
+//Use webhook route
+app.use(webhookRoute);
+
 // Endpoint to check a Wordle guess
 app.post("/wordle", async (req, res) => {
 	try {
@@ -92,36 +95,6 @@ app.get("/wordle/answer", async (req, res) => {
 		const response = await axios.get(`${API_URL}/answer`);
 		word = response.data.word;
 		res.json(response.data);
-	} catch (err) {
-		console.error("Error fetching answer:", err.message);
-		res.status(500).json({ error: "Failed to fetch Wordle answer" });
-	}
-});
-
-app.post("/webhook", async (req, res) => {
-	try {
-		const wordle = "wordle";
-		const htmlString = req.body.message;
-
-		// Create a temporary element and set its innerHTML
-		const dom = new JSDOM(htmlString);
-
-		// Extract the text content and trim any extra whitespace
-		const textContent = dom.window.document.body.textContent.trim();
-
-		if (textContent === wordle) {
-			const response = await axios.get(`${API_URL}/answer`);
-			word = response.data.word;
-			res.json({
-				status: "success",
-				message: `The wordle of the day is: ${word}`,
-			});
-		} else {
-			res.json({
-				status: "success",
-				message: "To see the wordle of the day, enter 'wordle' in the chat box",
-			});
-		}
 	} catch (err) {
 		console.error("Error fetching answer:", err.message);
 		res.status(500).json({ error: "Failed to fetch Wordle answer" });
