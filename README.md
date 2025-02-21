@@ -93,6 +93,10 @@ Returns the integration configuration for Telex. Use this configuration to set u
 ![Screenshot from 2025-02-21 20-35-40](https://github.com/user-attachments/assets/1fa82bf1-a981-4f0b-aacc-31392d7a66dc)
 
 + Wrote unit tests
+![Screenshot from 2025-02-21 22-20-48](https://github.com/user-attachments/assets/e033a0ea-165a-4940-9438-0155d59acc85)
+
+
+
 
 ## Deployment
 The Integration was deployed on Vercel and Telex
