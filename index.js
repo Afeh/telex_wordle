@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import cors from "cors";
+import { JSDOM } from "jsdom"
 
 const app = express();
 const port = 4000;
@@ -99,17 +100,16 @@ app.get("/wordle/answer", async (req, res) => {
 
 app.post("/webhook", async (req, res) => {
 	try {
-		const word = "wordle";
+		const wordle = "wordle";
 		const htmlString = req.body.message;
 
 		// Create a temporary element and set its innerHTML
-		const tempElement = document.createElement("div");
-		tempElement.innerHTML = htmlString;
+		const dom = new JSDOM(htmlString);
 
 		// Extract the text content and trim any extra whitespace
-		const textContent = tempElement.textContent.trim();
+		const textContent = dom.window.document.body.textContent.trim();
 
-		if (textContent === word) {
+		if (textContent === wordle) {
 			const response = await axios.get(`${API_URL}/answer`);
 			word = response.data.word;
 			res.json({
